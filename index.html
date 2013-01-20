@@ -69,6 +69,10 @@
                     editor.getSession().setTabSize(2);
                     editor.setValue(data);
                     $('button.run').click(function() {
+                        if(processingInstance != undefined) {
+                            processingInstance.noLoop();
+                            processingInstance = null;
+                        }
                         processingInstance = new Processing(getProcessingSketchId(), editor.getValue());
                     })
                     $('button.stop').click(function() {
